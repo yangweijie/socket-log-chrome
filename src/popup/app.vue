@@ -62,7 +62,7 @@ export default {
         set: val => store.commit('setEnable', val),
       }),
       protocol: computed(() => store.state.address.tls ? 'wss' : 'ws'),
-      displayUrl: computed(() => `${data.protocol}://${data.address.host}:${data.address.port}`),
+      displayUrl: computed(() => data.address.port == 80? `${data.protocol}://${data.address.host}` :`${data.protocol}://${data.address.host}:${data.address.port}`),
     })
 
     const onMessage = (message) => {

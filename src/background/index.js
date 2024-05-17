@@ -76,8 +76,7 @@ class Client {
         this.address = this.getAddress();
         let clientId = localStorage.getItem('client_id');
 
-        const address = `${this.address.tls ? 'wss' : 'ws'}://${this.address.host}:${this.address.port}/${clientId}`;
-
+        const address =  `${this.address.tls ? 'wss' : 'ws'}://${this.address.host}`+ (this.address.port == 80? `/${clientId}`:`${this.address.port}/${clientId}`);
         console.info('connection to ' + address);
 
         if (this.ws) {
